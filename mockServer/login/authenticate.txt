@@ -1,0 +1,71 @@
+/* 
+   This endpoint should return an authentication response. 
+   A 200-level HTTP response is interpreted as success and the GC.User._handleAuthenticationSuccess handles the response
+*/
+{
+    userName    : 'bluser',             // An account name or login name.
+    displayName : 'Bootleaf User',      // A display name
+    title       : 'Sr.'                 // A title for the user Mr, Mrs, Dr., etc.  
+
+    // An array of modules the user has access to
+    userModules : [                     
+                    {
+                        module_id : 5,
+                        name: 'Counties',
+                        appinst: 'counties'
+                    },
+                    {
+                        module_id : 8,
+                        name: 'Cities',
+                        appinst: 'cities'
+                    }
+                  ],                   
+
+    // The default map config options. These may be overridden by individual modules
+    mapConfig   : {
+            mapframe_id         : 100,
+            module_id           : 100,
+            defaultmaplat       : 42.297257897764,
+            defaultmaplon       : -93.946499840275,
+            defaultmapzoom      : 7,
+            defaultfeaturezoom  : 23,
+            maxresolution       : 156543.0399,
+            maxextentx1         : -95.7867098012147,
+            maxextenty1         : 41.127303424907,
+            maxextentx2         : -92.1062898793354,
+            maxextenty2         : 43.4672123706208,
+            numzoomlevels       : 23,
+            units               : "m",
+            projection          : "EPSG:900913",
+            display_projection  : "EPSG:4326"
+        },
+
+    // The following entries describe the default module
+    // All other modules have access to these layers as well as their own
+    appInst     : 'master',            
+
+    // An array of layer config options
+    layerConfig : [
+                    {
+                        module_id               : 99,
+                        layer_id                : 56,
+                        display_order           : 1,
+                        appinst                 : "master",
+                        layer_name              : "flatrockgeo.map-qw6zd9ma",
+                        description             : "Terrain",
+                        layer_url:              : "",
+                        layer_type              : "Mapbox",
+                        transparent             : true,
+                        opacity:                : 0.0,
+                        visibility              : false,
+                        displayinlayerswitcher  : true,
+                        singletile              : false,
+                        format                  : "png",
+                        isbaselayer             : true,
+                        bing_type               : "",
+                        api_key                 : "",
+                        websql                  : "",
+                        query_type              : "MF"
+                    }
+                ]                
+}

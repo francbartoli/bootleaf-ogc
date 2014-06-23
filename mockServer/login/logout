@@ -1,0 +1,2 @@
+// Any 200-level HTTP response is interpreted as success and it is assumed that logout was successful
+

@@ -1,0 +1,205 @@
+/*
+* All map functions for gc
+*/
+GC.Map = function(gc){
+    this.GC = gc;
+
+    // TODO check if map is already initialized
+    if(typeof map === 'object' && typeof map._leaflet_id !== 'undefined'){
+        this.map = map;
+    } else {
+        this.map = L.map('map');
+    }
+
+    // this.sidebar = L.control.sidebar("sidebar", {
+    //     closeButton: true,
+    //     position: "left"
+    // }).addTo(this.map);
+
+    this.map.on('click',this.handleClick,this);
+
+    $('.zoom-to-full-extent').on('click',this,this.zoomToFullExtent);
+
+    // config settings
+    this.defaultfeaturezoom = null;
+
+    this.defaultmaplat = null;
+    this.defaultmaplon = null;
+
+    this.defaultmapzoom = null;
+
+    this.display_projection = null;
+
+    this.mapframe_id = null;
+
+    this.maxextentx1 = null;
+    this.maxextentx2 = null;
+    this.maxextenty1 = null;
+    this.maxextenty2 = null;
+
+    this.maxresolution = null;
+
+    this.numzoomlevels = null;
+    this.projection = null;
+    this.units = null;
+
+    // this.geolocator = new GC.Geolocator(this.GC);
+};
+
+GC.Map.prototype = {
+    setConfig:function(mapConfig){
+        for(var x in mapConfig){
+            this[x] = mapConfig[x];
+        }  
+        var bounds = [[this.maxextenty1,this.maxextentx1],[this.maxextenty2,this.maxextentx2]];
+        this.map.setMaxBounds(bounds);
+        this.map.fitBounds(bounds);
+    },
+
+    removeLayers:function(layers){
+        for(var i = 0;i<layers.length;i++){
+            this.map.removeLayer(layers[i]);
+        }
+    },
+
+    zoomToFullExtent:function(){
+        var self;
+        if(arguments.length > 0 && typeof arguments[0].data == 'object'){
+            self = arguments[0].data;
+        }else{
+            self = this;
+        }
+        self.map.fitBounds([[self.maxextenty1,self.maxextentx1],[self.maxextenty1,self.maxextentx2]]);
+    },
+
+    baseMaps:function(){
+        var idsSeen = [];
+        var basemaps = [];
+        var i;
+
+        if(this.GC.appInst !== 'master' && this.GC.appInst !== null){
+            basemaps = this.GC.user.modules[this.GC.appInst].baseMaps();
+            for(i = 0;i<basemaps.length;i++){
+                idsSeen.push(basemaps[i]._config.layer_id);
+            }
+        }
+
+        var masterbasemaps = this.GC.user.modules.master.baseMaps();
+        for(i = 0;i<masterbasemaps.length;i++){
+           if($.inArray(masterbasemaps[i]._config.layer_id,idsSeen) === -1){
+                basemaps.push(masterbasemaps[i]);
+                idsSeen.push(masterbasemaps[i]._config.layer_id);
+           }
+        }
+
+        basemaps.sort(this._layerSortFunction);
+
+        return basemaps;
+    },
+
+    _layerSortFunction: function(a,b){
+       if(typeof a._config.display_order !== 'undefined' && typeof b._config.display_order !== 'undefined'){
+                return a._config.display_order - b._config.display_order;
+            }else{
+                // If either of the layers doesn't have a display_order, don't move them
+                return 0;
+            }
+    },
+
+    overlays:function(){
+        var idsSeen = [];
+        var overlays = [];
+        var i;
+        
+        if(this.GC.appInst !== 'master' && this.GC.appInst !== null){
+            overlays = this.GC.user.modules[this.GC.appInst].overlays();
+            for(i = 0;i<overlays.length;i++){
+                idsSeen.push(overlays[i]._config.layer_id);
+            }
+        }
+
+        var masteroverlays = this.GC.user.modules.master.overlays();
+        for(i = 0;i<masteroverlays.length;i++){
+           if($.inArray(masteroverlays[i]._config.layer_id,idsSeen) === -1){
+                overlays.push(masteroverlays[i]);
+                idsSeen.push(masteroverlays[i]._config.layer_id);
+           }
+        }
+
+        overlays.sort(this._layerSortFunction);
+
+        return overlays;
+    },
+
+    useAppInst:function(appInst){
+        var basemaps = this.baseMaps();
+        var overlays = this.overlays();
+        $('.maplayerlist').remove();
+
+        var havebase = false;
+        var elem;
+        var i;
+
+        // Use reverse for loop so that our layers are added to the list in layer order
+        for(i=basemaps.length;i>0;){
+            i--;
+            if(basemaps[i]._config.displayinlayerswitcher){
+                elem = $("<li data-layerid='"+basemaps[i]._config.layer_id+"' data-appinst='" + appInst + "' class='maplayerlist'><a href='#'><input type='radio' name='baseradio'/>"+ basemaps[i]._config.description +"</a></li>");
+                elem.bind('click',basemaps[i],basemaps[i].show);
+                $('#baselist').after(elem);
+            }
+            if(basemaps[i]._config.visibility){
+                if(basemaps[i].show()){
+                    havebase = true;
+                }
+            }
+        }
+
+        // Ensure at least one basemap
+        if(!havebase && basemaps.length > 0){
+            basemaps[0].show();
+        }
+
+        for(i=overlays.length;i>0;){
+            i--;
+            if(overlays[i]._config.displayinlayerswitcher){
+                elem = $("<li data-layerid='"+overlays[i]._config.layer_id+"' data-appinst='" + appInst + "' class='maplayerlist'><a href='#'><input type='checkbox'/>"+ overlays[i]._config.description +"</a></li>");
+                elem.bind('click',overlays[i],overlays[i].show);
+                $('#overlayslist').after(elem);
+            }
+            if(overlays[i]._config.visibility){
+                overlays[i].show();
+            }
+        }
+    },
+
+    removeBasemaps:function(){
+        var l;
+        for(var x in this.map._layers){
+            if(this.map._layers[x].options !== undefined && this.map._layers[x].options.maplayer !== undefined && this.map._layers[x].options.maplayer.isBasemap()){
+                this.map.removeLayer(this.map._layers[x]);
+            }  
+        }
+    },
+
+    handleClick:function(e){
+        if(this.GC.user.activeModule !== null){
+            this.GC.user.activeModule.handleClick(e);
+        }
+    },
+
+    geolocate:function(){
+        // TODO: Replace this call with bootleaf built-in geolocation suppport
+      //   return this.geolocator.getCurrentPosition(this).then(
+      //   function(success,self){
+        //     // For debugging, place a marker: L.marker([success.coords.latitude,success.coords.longitude]).addTo(self.map);
+        //     // If the position is within our map's limits, pan and zoom to it
+        //     if(self.map.options.maxBounds.contains([success.coords.latitude,success.coords.longitude])){
+        //         self.map.setZoom(15);
+        //         self.map.panTo([success.coords.latitude,success.coords.longitude]);
+        //     }else{
+        //         console.log("Current location "+ success.coords.latitude + ',' + success.coords.longitude + "is outside map max bounds");
+        //     }
+        });
+    }
+};

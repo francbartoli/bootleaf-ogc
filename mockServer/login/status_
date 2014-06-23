@@ -1,0 +1,8 @@
+/*
+   This is an un-successful status check.
+
+    If it were renamted to 'status' it would 
+    be returned with a 200 status and the 
+    JavaScript promise that checks the status
+    would complete. 
+*/

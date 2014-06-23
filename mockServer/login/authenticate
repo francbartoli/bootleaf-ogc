@@ -1,0 +1,62 @@
+{
+        "userName": "bluser",  
+        "displayName": "Bootleaf User",
+        "title": "Sr."          ,
+
+        "userModules": [                     
+        {
+            "module_id": 99,
+            "name": "Default",
+            "appinst": "master"
+        },
+        {
+            "module_id": 2,
+            "name": "General Purpose Mapping",
+            "appinst": "maplayers"
+        }
+    ],                   
+
+        "mapConfig": {
+            "mapframe_id": 100,
+            "module_id": 100,
+            "defaultmaplat": 42.0,
+            "defaultmaplon": -93.0,
+            "defaultmapzoom": 7,
+            "defaultfeaturezoom": 23,
+            "maxresolution": 156543.0399,
+            "maxextentx1": -180.0,
+            "maxextenty1": -89.0,
+            "maxextentx2": 180.0,
+            "maxextenty2": 89.0,
+            "numzoomlevels": 23,
+            "units": "m",
+            "projection": "EPSG:900913",
+            "display_projection": "EPSG:4326"
+        },
+
+        "appInst": "master",            
+
+        "layerConfig": [
+        {
+            "module_id": 99,
+            "layer_id": 56,
+            "display_order": 1,
+            "appinst": "master",
+            "layer_name": "flatrockgeo.map-qw6zd9ma",
+            "description": "Terrain",
+            "layer_url": "",
+            "layer_type": "Mapbox",
+            "transparent": true,
+            "opacity": 0.0,
+            "visibility": false,
+            "displayinlayerswitcher": true,
+            "singletile": false,
+            "format": "png",
+            "isbaselayer": true,
+            "bing_type": "",
+            "api_key": "",
+            "websql": "",
+            "query_type": "MF"
+        }
+    ]                
+}

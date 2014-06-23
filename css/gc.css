@@ -1,0 +1,47 @@
+/* Layer list dropdowns */
+.nav-list input {
+    margin-right: 8px;
+}
+
+
+.dropdown-menu > li.activelayer > a {
+    background-color: #ccebc4;
+}
+
+.dropdown-menu > li.activelayer:hover > a {
+    background-color: #9cd88c;
+}
+
+/* Cursors for clicking/moving */
+#map {
+    cursor: crosshair;
+}
+
+#map:active {
+    cursor: move;
+}
+
+/* Animation for pulsing geolocation marker */
+svg .pulsate {
+    stroke-width: 4;
+    animation: geopulse 5s infinite;
+    -webkit-animation: geopulse 5s infinite;
+}
+
+@-webkit-keyframes geopulse {
+    0% {stroke-width:0}
+    50% {stroke-width:20}
+    100% {stroke-width:0}
+}
+
+@keyframes geopulse {
+    0% {stroke-width:0}
+    50% {stroke-width:20}
+    100% {stroke-width:0}
+}
+
+/* Popup divider for multiple WMS results */
+
+.popupbreaker, tr.popupbreaker,tr.popupbreaker td  {
+    background-color: #345 !important;
+}

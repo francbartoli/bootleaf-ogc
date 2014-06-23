@@ -1,0 +1,2 @@
+Everything in here should be served up as JSON. If you're using Apache 
+and have .htaccess mods enabled, then this should happen automatically.
