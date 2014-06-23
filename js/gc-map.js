@@ -42,8 +42,6 @@ GC.Map = function(gc){
     this.numzoomlevels = null;
     this.projection = null;
     this.units = null;
-
-    // this.geolocator = new GC.Geolocator(this.GC);
 };
 
 GC.Map.prototype = {
@@ -186,20 +184,5 @@ GC.Map.prototype = {
         if(this.GC.user.activeModule !== null){
             this.GC.user.activeModule.handleClick(e);
         }
-    },
-
-    geolocate:function(){
-        // TODO: Replace this call with bootleaf built-in geolocation suppport
-      //   return this.geolocator.getCurrentPosition(this).then(
-      //   function(success,self){
-        //     // For debugging, place a marker: L.marker([success.coords.latitude,success.coords.longitude]).addTo(self.map);
-        //     // If the position is within our map's limits, pan and zoom to it
-        //     if(self.map.options.maxBounds.contains([success.coords.latitude,success.coords.longitude])){
-        //         self.map.setZoom(15);
-        //         self.map.panTo([success.coords.latitude,success.coords.longitude]);
-        //     }else{
-        //         console.log("Current location "+ success.coords.latitude + ',' + success.coords.longitude + "is outside map max bounds");
-        //     }
-        });
     }
 };
