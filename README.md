@@ -60,3 +60,5 @@ with
     <script src="gc/js/gc_init.js"></script>
     <!-- End of GC Changes -->
 
+
+You may wish to include a script other than gc_init.js which refers to your own login server
