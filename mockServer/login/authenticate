@@ -1,7 +1,7 @@
 {
-        "userName": "bluser",  
+    "userName": "bluser",  
         "displayName": "Bootleaf User",
-        "title": "Sr."          ,
+        "title": "Sr.",
 
         "userModules": [                     
         {
@@ -19,16 +19,16 @@
         "mapConfig": {
             "mapframe_id": 100,
             "module_id": 100,
-            "defaultmaplat": 42.0,
+            "defaultmaplat": 47.0,
             "defaultmaplon": -93.0,
             "defaultmapzoom": 7,
-            "defaultfeaturezoom": 23,
+            "defaultfeaturezoom": 15,
             "maxresolution": 156543.0399,
             "maxextentx1": -180.0,
             "maxextenty1": -89.0,
             "maxextentx2": 180.0,
             "maxextenty2": 89.0,
-            "numzoomlevels": 23,
+            "numzoomlevels": 18,
             "units": "m",
             "projection": "EPSG:900913",
             "display_projection": "EPSG:4326"

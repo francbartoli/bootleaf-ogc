@@ -1,8 +1,5 @@
 /*
-   This is an un-successful status check.
+    Any non-200 level response (including a 404) means the user isn't currently logged in.
 
-    If it were renamted to 'status' it would 
-    be returned with a 200 status and the 
-    JavaScript promise that checks the status
-    would complete. 
+    Copy the 'authenticate' file to a new file named 'status' and the user will be auto-logged in.
 */

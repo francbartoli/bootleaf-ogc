@@ -23,9 +23,9 @@ GC.User = function(gc){
             self.GC.util.focusAtEnd('#username');
         },
         'hide.bs.modal': function(e){
-            if(self.whenAuthenticated.state() !== 'resolved'){
-                e.preventDefault();
-            }
+            // if(self.whenAuthenticated.state() !== 'resolved'){
+            //     e.preventDefault();
+            // }
         }
     }).modal('show');
 

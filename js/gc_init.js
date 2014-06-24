@@ -33,11 +33,9 @@ $(document).ready(function(){
         G.useAppInst('maplayers'); 
     });
 
-    initialLoginStatusPromise.then(
-        function(success){
-            G.user._handleAuthenticationSuccess(success);
-        }
-    );
+    initialLoginStatusPromise.then(function(success){
+        // Not sure what's still happening when this runs, but we need to delay so we're not setting bounds twice
+        var f = function(){G.user._handleAuthenticationSuccess(success);};
+        setTimeout(f,500);
+    });
 });
-
-

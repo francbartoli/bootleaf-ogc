@@ -46,12 +46,18 @@ GC.Map = function(gc){
 
 GC.Map.prototype = {
     setConfig:function(mapConfig){
+
+        mapConfig = mapConfig || this;
+
         for(var x in mapConfig){
             this[x] = mapConfig[x];
         }  
-        var bounds = [[this.maxextenty1,this.maxextentx1],[this.maxextenty2,this.maxextentx2]];
+
+        var bounds = [[mapConfig.maxextenty1,mapConfig.maxextentx1],[mapConfig.maxextenty2,mapConfig.maxextentx2]];
         this.map.setMaxBounds(bounds);
-        this.map.fitBounds(bounds);
+        // this.map.fitBounds(bounds);
+        this.map.panTo([mapConfig.defaultmaplat,mapConfig.defaultmaplon]);
+        this.map.setZoom(mapConfig.defaultmapzoom);
     },
 
     removeLayers:function(layers){
