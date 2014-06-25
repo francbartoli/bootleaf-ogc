@@ -1,8 +1,8 @@
-Bootleaf App!
+Bootleaf OGC!
 ============
-This is an app that implements user modules and WFS searching on top of Bootleaf.
+This is an app is working to support OGC supported servies (WMS, WFS) on top of Bootleaf.
 
-It also adds user authentication.
+It also adds support for user authentication and modules.
 
 Layers can be specified as queriable or not. 
 
@@ -38,16 +38,17 @@ Index.html is a copy of bootleaf's index.html file with a block of changes.
 
 The changes are to replace the 
     
-    <script src="assets/leaflet-0.7.2/leaflet.js"></script>
+    <script src="assets/leaflet-0.7.3/leaflet.js"></script>
 
 with 
+
 
     <!-- 
         GC changes 
         Find the <script> tag referencing leaflet.js
         Replace it with the GC code
     -->
-    <!-- script src="assets/leaflet-0.7.2/leaflet.js"></script -->
+    <!-- script src="//api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.uncompressed.js"></script -->
     <script src="//api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
     <link rel="stylesheet" href="gc/css/gc.css">
     <script src="gc/js/gc.js"></script>
