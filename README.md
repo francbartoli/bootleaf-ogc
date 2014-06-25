@@ -1,6 +1,6 @@
 Bootleaf OGC!
 ============
-This is an app is working to support OGC supported servies (WMS, WFS) on top of Bootleaf.
+This is an app is working to support OGC supported servies (WMS, WFS, etc.) on top of Bootleaf.
 
 It also adds support for user authentication and modules.
 
@@ -63,3 +63,8 @@ with
 
 
 You may wish to include a script other than gc_init.js which refers to your own login server
+=======
+bootleaf-ogc
+============
+
+Adding support for OGC layers to Bootleaf (WMS, WFS, etc.)
