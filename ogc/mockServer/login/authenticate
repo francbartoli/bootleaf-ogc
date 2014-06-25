@@ -47,7 +47,7 @@
             "layer_url": "",
             "layer_type": "Mapbox",
             "transparent": true,
-            "opacity": 0.0,
+            "opacity": 1.0,
             "visibility": false,
             "displayinlayerswitcher": true,
             "singletile": false,
