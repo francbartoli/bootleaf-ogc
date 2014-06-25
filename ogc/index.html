@@ -310,7 +310,30 @@
     <script src="assets/typeahead-0.10.2/typeahead.bundle.min.js"></script>
     <script src="assets/handlebars-1.3.0/handlebars.js"></script>
     <script src="assets/list-1.1.1/list.min.js"></script>
-    <script src="assets/leaflet-0.7.3/leaflet.js"></script>
+    <!-- script src="assets/leaflet-0.7.3/leaflet.js"></script -->
+
+
+    <!-- 
+        Oogc changes 
+        Find the <script> tag referencing leaflet.js
+        Replace it with the Oogc code
+    -->
+    <!-- script src="//api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.uncompressed.js"></script -->
+    <script src="//api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
+    <link rel="stylesheet" href="ogc/css/ogc.css">
+    <script src="ogc/js/ogc.js"></script>
+    <script src="ogc/js/ogc-layerConfig.js"></script>
+    <script src="ogc/js/ogc-map.js"></script>
+    <script src="ogc/js/ogc-maplayer.js"></script>
+    <script src="ogc/js/ogc-module.js"></script>
+    <script src="ogc/js/ogc-user.js"></script>
+    <script src="ogc/js/ogc-util.js"></script>
+    <script src="ogc/js/ogc_init.js"></script>
+    <!-- End of Oogc Changes -->
+
+
+
+
     <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
     <script src="assets/leaflet-activearea/L.activearea.js"></script>
     <script src="assets/leaflet-sidebar-0.1.5/L.Control.Sidebar.js"></script>
