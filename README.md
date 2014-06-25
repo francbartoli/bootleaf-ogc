@@ -34,7 +34,7 @@ This currently (June 25, 2014) works with Bootleaf commit 363156f5b94dbe1dbe43c7
 
 Install/Setup
 -------------
-Check this app out into a directory named 'gc' in the base directory of your Bootleaf install (next to the assets directory).
+Check this app out into a directory named 'ogc' in the base directory of your Bootleaf install (next to the assets directory).
 
 Index.html is a copy of bootleaf's index.html file with a block of changes. 
 
@@ -46,22 +46,22 @@ with
 
 
     <!-- 
-        GC changes 
+        ogc changes 
         Find the <script> tag referencing leaflet.js
-        Replace it with the GC code
+        Replace it with the ogc code
     -->
     <!-- script src="//api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.uncompressed.js"></script -->
     <script src="//api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
-    <link rel="stylesheet" href="gc/css/gc.css">
-    <script src="gc/js/gc.js"></script>
-    <script src="gc/js/gc-layerConfig.js"></script>
-    <script src="gc/js/gc-map.js"></script>
-    <script src="gc/js/gc-maplayer.js"></script>
-    <script src="gc/js/gc-module.js"></script>
-    <script src="gc/js/gc-user.js"></script>
-    <script src="gc/js/gc-util.js"></script>
-    <script src="gc/js/gc_init.js"></script>
-    <!-- End of GC Changes -->
+    <link rel="stylesheet" href="ogc/css/ogc.css">
+    <script src="ogc/js/ogc.js"></script>
+    <script src="ogc/js/ogc-layerConfig.js"></script>
+    <script src="ogc/js/ogc-map.js"></script>
+    <script src="ogc/js/ogc-maplayer.js"></script>
+    <script src="ogc/js/ogc-module.js"></script>
+    <script src="ogc/js/ogc-user.js"></script>
+    <script src="ogc/js/ogc-util.js"></script>
+    <script src="ogc/js/ogc_init.js"></script>
+    <!-- End of ogc Changes -->
 
 
-You may wish to include a script other than gc_init.js which refers to your own login server
+You may wish to include a script other than ogc_init.js which refers to your own login server
