@@ -8,6 +8,10 @@ Layers can be specified as queriable or not.
 
 It is a work in progress as is the documentation. 
 
+DEMO!
+-----
+You can [try the Bootleaf-OGC demo here](http://flatrockgeo.github.io/bootleaf-ogc/ogc.html). 
+
 
 Definitions
 -----------
