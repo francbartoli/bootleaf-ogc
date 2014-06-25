@@ -29,6 +29,8 @@ previous mapping system and will be phased out in a future version.
 
 We replace leaflet.js with mapbox.js. Mapbox.js provides leaflet along with mapbox support.
 
+This currently (June 25, 2014) works with Bootleaf commit 363156f5b94dbe1dbe43c72033a53d8321a900e9. 
+
 
 Install/Setup
 -------------
@@ -63,8 +65,3 @@ with
 
 
 You may wish to include a script other than gc_init.js which refers to your own login server
-=======
-bootleaf-ogc
-============
-
-Adding support for OGC layers to Bootleaf (WMS, WFS, etc.)
