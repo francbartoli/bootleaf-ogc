@@ -12,6 +12,8 @@ DEMO!
 -----
 You can [try the Bootleaf-OGC demo here](http://flatrockgeo.github.io/bootleaf-ogc/ogc.html). 
 
+It doesn't actually hit an authentication server, so use any username/password you wish.
+
 
 Definitions
 -----------
