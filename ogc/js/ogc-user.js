@@ -60,7 +60,8 @@ OGC.User.prototype = {
             self = this;
         }
 
-        return $.post(self.OGC.baseUrl + 'login/authenticate',{userEmail:un,userPassword:pw},null,'json').then(
+        // switched to a GET just for the demo
+        return $.getJSON(self.OGC.baseUrl + 'login/authenticate').then(
             function(success){
                 self._handleAuthenticationSuccess(success);
             },
